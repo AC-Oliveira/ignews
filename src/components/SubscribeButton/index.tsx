@@ -9,7 +9,7 @@ export function SubscribeButton() {
   const router = useRouter();
 
   const handleSubscribe = async () => {
-    if (session.activeSubscription) {
+    if (session?.activeSubscription) {
       router.push('/posts');
       return;
     }

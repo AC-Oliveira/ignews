@@ -44,7 +44,7 @@ export default function PreviewPost({ post }: IPreviewPostProps) {
     </>
   );
 }
-console.log(error);
+
 export const getStaticPaths = () => {
   return {
     paths: [],

@@ -17,8 +17,6 @@ interface IPostsProps {
 }
 
 export default function Posts({ posts }: IPostsProps) {
-  console.log(posts);
-
   return (
     <>
       <Head>
@@ -45,7 +43,6 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
   const client = createClient({ previewData });
 
   const response = await client.getAllByType('post');
-  // console.log('response', JSON.stringify(response, null, 2));/
   const posts = response.map((post) => ({
     slug: post.uid,
     title: RichText.asText(post.data.title),

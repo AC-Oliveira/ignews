@@ -19,6 +19,8 @@ const saveSubscription = async (
     )
   );
 
+
+
   const subscription = await stripe.subscriptions.retrieve(subscriptionId);
   const subscriptionData = {
     id: subscription.id,
@@ -27,9 +29,10 @@ const saveSubscription = async (
     price_id: subscription.items.data[0].price.id
   };
 
-  console.log(subscriptionData);
 
   if (createAction) {
+    console.log('Subscription Criada');
+
     await fauna.query(
       q.Create(
         q.Collection('subscriptions'),
@@ -37,7 +40,7 @@ const saveSubscription = async (
       )
     );
   } else {
-    console.log('Subscription cancelada');
+    console.log('Subscription Cancelada');
     await fauna.query(
       q.Replace(
         q.Select(
